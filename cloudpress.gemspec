@@ -24,6 +24,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "dropbox-sdk"
+  spec.add_dependency "metadown"
+  spec.add_dependency "pygments.rb"
+  spec.add_dependency "nokogiri"
   spec.add_dependency "rails", "~> 4.2.0"
 
   spec.add_development_dependency "bundler", "~> 1.8"

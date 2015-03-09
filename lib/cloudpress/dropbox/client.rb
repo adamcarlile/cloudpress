@@ -2,11 +2,8 @@ module Cloudpress
   module Dropbox
     class Client
 
-      attr_accessor :token, :options
-
-      def initialize(token, options={})
+      def initialize(token)
         @token   = token
-        @options = options.reverse_merge default_options
       end
 
       def connection

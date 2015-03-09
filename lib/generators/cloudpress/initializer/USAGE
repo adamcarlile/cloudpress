@@ -1,0 +1,8 @@
+Description:
+    Explain the generator
+
+Example:
+    This will install cloudpresses initializer, it will require you to visit the dropbox app console
+
+    This will create:
+        config/cloudpress.rb

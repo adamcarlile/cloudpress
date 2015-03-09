@@ -1,4 +1,7 @@
 Cloudpress::Engine.routes.draw do
-  get '/authorize', to: 'cloudpress/authorization#create'
   root to: 'cloudpress/posts#index'
+
+  resource :archives, path: '/:year(/:month)', only: :show
+  resource :posts, path: '*id', only: :show
+  
 end
