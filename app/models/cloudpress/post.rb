@@ -1,6 +1,7 @@
 module Cloudpress
   class Post < ActiveRecord::Base
     default_scope ->{ order(publish_date: :desc) }
+    paginates_per 10
 
     def update_from_dropbox(dropbox_file)
       self.revision     = dropbox_file.revision

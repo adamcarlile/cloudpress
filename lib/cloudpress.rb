@@ -2,6 +2,8 @@ require "dropbox_sdk"
 require "metadown"
 require "redcarpet"
 require "pygments"
+require "kaminari"
+require "groupdate"
 require "cloudpress/version"
 require "cloudpress/engine"
 

@@ -2,13 +2,19 @@ module Cloudpress
   class PostsController < Cloudpress::ApplicationController
 
     def index
-      binding.pry
+    end
+
+    def show
     end
 
     protected
 
       def posts
-        @posts ||= Cloudpress::Post.latest
+        @posts ||= Cloudpress::Post.page(params[:page])
+      end
+
+      def post
+        @post ||= Cloudpress::Post.find_by(slug: params[:slug])
       end
 
   end

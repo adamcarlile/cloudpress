@@ -27,6 +27,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "metadown"
   spec.add_dependency "pygments.rb"
   spec.add_dependency "nokogiri"
+  spec.add_dependency "kaminari"
+  spec.add_dependency "builder"
+  spec.add_dependency "groupdate"
   spec.add_dependency "rails", "~> 4.2.0"
 
   spec.add_development_dependency "bundler", "~> 1.8"
