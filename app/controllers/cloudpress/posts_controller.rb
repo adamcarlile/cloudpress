@@ -12,10 +12,12 @@ module Cloudpress
       def posts
         @posts ||= Cloudpress::Post.page(params[:page])
       end
+      helper_method :posts
 
       def post
         @post ||= Cloudpress::Post.find_by(slug: params[:slug])
       end
+      helper_method :post
 
   end
 end

@@ -1,6 +1,11 @@
 module Cloudpress
   class Post < ActiveRecord::Base
-    default_scope ->{ order(publish_date: :desc) }
+    default_scope     -> { order(publish_date: :desc) }
+    scope :published, -> { where(state: 'live') }
+    scope :draft,     -> { where(state: 'draft') }
+
+    scope :between,   ->(date_range) { where(:publish_date => date_range) }
+
     paginates_per 10
 
     def update_from_dropbox(dropbox_file)
