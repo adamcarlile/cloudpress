@@ -1,0 +1,8 @@
+section#archive-list
+  - archives.each do |archive|
+    ul
+      li 
+        = link_to archive.year, archives_path(archive.year)
+        ul
+          - archive.months.each do |date|
+            li = link_to date.strftime("%B"), archives_path(archive.year, date.month)

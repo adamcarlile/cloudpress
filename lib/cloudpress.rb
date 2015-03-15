@@ -4,6 +4,7 @@ require "redcarpet"
 require "pygments"
 require "kaminari"
 require "groupdate"
+require "slim"
 require "cloudpress/version"
 require "cloudpress/engine"
 
@@ -13,6 +14,10 @@ require "cloudpress/dropbox/connector"
 require "cloudpress/dropbox/directory"
 require "cloudpress/dropbox/file"
 require "cloudpress/dropbox/cleaner"
+
+require "cloudpress/renderers/archive"
+require "cloudpress/renderers/post"
+require "cloudpress/renderers/posts"
 
 module Cloudpress
 
@@ -52,6 +57,7 @@ module Cloudpress
   end
 
   def update!
+    reload!
     import!
     purge!
   end

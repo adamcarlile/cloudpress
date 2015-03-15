@@ -10,7 +10,7 @@ module Cloudpress
     protected
 
       def posts
-        @posts ||= Cloudpress::Post.page(params[:page])
+        @posts ||= Cloudpress::Post.published.page(params[:page])
       end
       helper_method :posts
 

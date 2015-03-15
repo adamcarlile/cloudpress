@@ -1,7 +1,8 @@
 Cloudpress::Engine.routes.draw do
-  root to: 'posts#index'
 
   resource :archives, path: '/:year(/:month)', only: :show
-  resource :posts, path: '*id', only: :show
+  
+  root to: 'posts#index'
+  get '*slug', to: 'posts#show', as: :post
 
 end

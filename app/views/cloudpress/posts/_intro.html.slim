@@ -1,0 +1,8 @@
+article id="post-#{post.id}"
+  header
+    h1   = link_to post.title, post_path(post)
+    time = post.publish_date.to_s(:long)
+  p
+    = post.summary
+  footer
+    = link_to 'Read more', post_path(post)
