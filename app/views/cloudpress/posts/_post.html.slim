@@ -2,6 +2,7 @@ article id="post-#{post.id}"
   header
     h1 = post.title
     time.published-at = post.publish_date.to_s(:long)
+    = render_cloudpress_tags(post.tags) if renderer.tags?
   = post.body.html_safe
   footer
     = yield

@@ -1,7 +1,5 @@
 class CreateCloudpressPosts < ActiveRecord::Migration
   def change
-    execute 'CREATE EXTENSION hstore'
-    
     create_table :cloudpress_posts do |t|
       t.string :title
       t.string :slug

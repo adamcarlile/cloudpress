@@ -3,12 +3,17 @@ module Cloudpress
     class << self
 
       def all
-        wrap(Cloudpress::Post.unscoped.group_by_month(:publish_date).count.keys.group_by {|x| x.year})
+        wrap(Cloudpress::Post.unscoped.published.group_by_month(:publish_date).count.keys.group_by {|x| x.year})
+      end
+
+      def year(date)
+        raise ArgumentError unless date.respond_to?(:year)
+        new(date_range(date.beginning_of_year..date.end_of_year))
       end
 
       def find(date)
         raise ArgumentError unless date.respond_to?(:year)
-        new(date.beginning_of_month..date.end_of_month)
+        new(date_range(date.beginning_of_month..date.end_of_month))
       end
 
       private

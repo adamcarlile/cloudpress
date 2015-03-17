@@ -2,6 +2,7 @@ article id="post-#{post.id}"
   header
     h1   = link_to post.title, post_path(post)
     time = post.publish_date.to_s(:long)
+    = render_cloudpress_tags(post.tags) if renderer.tags?
   p
     = post.summary
   footer

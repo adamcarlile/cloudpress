@@ -1,8 +1,8 @@
 module Cloudpress
   module RendererHelper
 
-    def render_cloudpress_post_list(posts, &block)
-      Cloudpress::Renderers::Posts.new(self, posts).render
+    def render_cloudpress_posts(posts, options={}, &block)
+      Cloudpress::Renderers::Posts.new(self, posts, options).render
     end
 
     def render_cloudpress_post(post, options={}, &block)
@@ -11,8 +11,12 @@ module Cloudpress
       renderer.render
     end
 
+    def render_cloudpress_tags(tags)
+      Cloudpress::Renderers::Tags.new(self, tags).render
+    end
+
     def render_cloudpress_archives(archives)
-      
+      Cloudpress::Renderers::Archives.new(self, archives).render
     end
 
   end

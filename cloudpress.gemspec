@@ -31,6 +31,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "builder"
   spec.add_dependency "groupdate"
   spec.add_dependency "slim"
+  spec.add_dependency "acts-as-taggable-on"
+  spec.add_dependency "friendly_id"
   spec.add_dependency "rails", "~> 4.2.0"
 
   spec.add_development_dependency "bundler", "~> 1.8"

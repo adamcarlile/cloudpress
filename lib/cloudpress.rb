@@ -5,6 +5,8 @@ require "pygments"
 require "kaminari"
 require "groupdate"
 require "slim"
+require "friendly_id"
+require "acts-as-taggable-on"
 require "cloudpress/version"
 require "cloudpress/engine"
 
@@ -16,8 +18,11 @@ require "cloudpress/dropbox/file"
 require "cloudpress/dropbox/cleaner"
 
 require "cloudpress/renderers/archive"
+require "cloudpress/renderers/archives"
 require "cloudpress/renderers/post"
 require "cloudpress/renderers/posts"
+require "cloudpress/renderers/tag"
+require "cloudpress/renderers/tags"
 
 module Cloudpress
 

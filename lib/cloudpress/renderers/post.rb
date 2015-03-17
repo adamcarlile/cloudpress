@@ -2,7 +2,7 @@ module Cloudpress
   module Renderers
     class Post
 
-      attr_reader :context, :post, :options
+      attr_reader :post, :options
       attr_accessor :content
 
       def initialize(context, post, options={})
@@ -12,9 +12,13 @@ module Cloudpress
       end
 
       def render(&block)
-        context.render layout: template, locals: {post: post} do
+        @context.render layout: template, locals: {post: post, renderer: self} do
           content
         end.html_safe
+      end
+
+      def tags?
+        options[:tags]
       end
 
       private
@@ -26,6 +30,7 @@ module Cloudpress
         def default_options
           {
             template: :post,
+            tags: true
           }
         end
 

@@ -1,5 +1,7 @@
 module Cloudpress
   class Post < ActiveRecord::Base
+    acts_as_taggable
+
     default_scope     -> { order(publish_date: :desc) }
     scope :published, -> { where(state: 'live') }
     scope :draft,     -> { where(state: 'draft') }
@@ -16,6 +18,7 @@ module Cloudpress
       self.publish_date = created_at || Time.now
       self.publish_date = Time.parse(metadata[:publish_date]) if metadata[:publish_date]
       self.slug         = metadata[:slug] || generate_slug
+      self.tag_list     = metadata_tags.map(&:downcase)
       self.state        = dropbox_file.state
       save!
     end
@@ -52,6 +55,10 @@ module Cloudpress
         slug_parts << publish_date.month
         slug_parts << title.parameterize
         slug_parts.join('/')
+      end
+
+      def metadata_tags
+        [metadata[:tags]].flatten.compact
       end
 
   end

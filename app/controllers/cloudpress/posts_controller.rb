@@ -8,7 +8,7 @@ module Cloudpress
     end
 
     protected
-
+    
       def posts
         @posts ||= Cloudpress::Post.published.page(params[:page])
       end

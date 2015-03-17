@@ -1,0 +1,3 @@
+li
+  = link_to archive.year, archives_path(archive.year)
+  = content_tag(:ul, render(partial: 'cloudpress/archives/month', collection: archive.months, locals: {archive: archive}))
