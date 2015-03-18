@@ -12,7 +12,7 @@ module Cloudpress
       end
 
       def render(&block)
-        @context.render layout: template, locals: {post: post, renderer: self} do
+        @context.render layout: template, locals: {renderer: self} do
           content
         end.html_safe
       end

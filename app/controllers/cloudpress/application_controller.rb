@@ -4,7 +4,7 @@ module Cloudpress
     protected
 
       def archives
-        @archive ||= Cloudpress::Archive.all
+        @archives ||= Cloudpress::Archive.all
       end
       helper_method :archives
 

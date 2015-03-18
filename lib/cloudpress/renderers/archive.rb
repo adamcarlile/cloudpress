@@ -10,7 +10,7 @@ module Cloudpress
       end
 
       def render
-        @context.render(partial: 'cloudpress/archives/archive', locals: {renderer: self, archive: archive})
+        @context.render(partial: 'cloudpress/archives/archive', locals: {renderer: self})
       end
 
     end

@@ -1,9 +1,9 @@
-article id="post-#{post.id}"
+article id="post-#{renderer.post.id}"
   header
-    h1   = link_to post.title, post_path(post)
-    time = post.publish_date.to_s(:long)
-    = render_cloudpress_tags(post.tags) if renderer.tags?
+    h1   = link_to renderer.post.title, post_path(renderer.post)
+    time = renderer.post.publish_date.to_s(:long)
+    = render_cloudpress_tags(renderer.post.tags) if renderer.tags?
   p
-    = post.summary
+    = renderer.post.summary
   footer
-    = link_to 'Read more', post_path(post)
+    = link_to 'Read more', post_path(renderer.post)

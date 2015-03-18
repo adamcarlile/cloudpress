@@ -2,7 +2,6 @@ module Cloudpress
   class ArchivesController < Cloudpress::ApplicationController
 
     def show
-
     end
 
     private
