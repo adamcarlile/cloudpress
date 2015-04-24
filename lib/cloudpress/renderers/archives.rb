@@ -15,7 +15,9 @@ module Cloudpress
 
       def render
         @context.render(layout: 'cloudpress/archives/archives', locals: {renderer: self}) do
-          wrapped_archives.map(&:render).join("\n").html_safe
+          @context.content_tag(:ul) do
+            wrapped_archives.map(&:render).join("\n").html_safe
+          end
         end
       end
       
