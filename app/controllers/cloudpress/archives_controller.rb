@@ -18,7 +18,7 @@ module Cloudpress
       helper_method :archive
 
       def posts
-        @posts ||= archive.posts
+        @posts ||= archive.posts.page(params[:page])
       end
       helper_method :posts
 
