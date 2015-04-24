@@ -8,5 +8,10 @@ module Cloudpress
       end
       helper_method :archives
 
+      def tags
+        @tags ||= ActsAsTaggableOn::Tag.all
+      end
+      helper_method :tags
+
   end
 end
