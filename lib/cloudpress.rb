@@ -6,6 +6,7 @@ require "kaminari"
 require "groupdate"
 require "slim"
 require "friendly_id"
+require "builder"
 require "acts-as-taggable-on"
 require "cloudpress/version"
 require "cloudpress/engine"
@@ -23,6 +24,7 @@ require "cloudpress/renderers/post"
 require "cloudpress/renderers/posts"
 require "cloudpress/renderers/tag"
 require "cloudpress/renderers/tags"
+require "cloudpress/renderers/flash"
 
 module Cloudpress
 
@@ -34,12 +36,14 @@ module Cloudpress
 
   def configure &block
     @config = ActiveSupport::OrderedOptions.new
-    @config.app_key    = nil
-    @config.app_secret = nil
-    @config.app_token  = nil
-    @config.base_path  = 'cloudpress'
-    @config.live_path  = 'live'
-    @config.draft_path = 'draft'
+    @config.app_key        = nil
+    @config.app_secret     = nil
+    @config.app_token      = nil
+    @config.base_path      = 'cloudpress'
+    @config.live_path      = 'live'
+    @config.draft_path     = 'draft'
+    @config.draft_user     = nil
+    @config.draft_password = nil
     @config.markdown_renderer = Redcarpet::Markdown.new(Formatters::HTMLWithPygments, fenced_code_blocks: true)
     yield(@config) if block_given?
     @config
@@ -79,6 +83,17 @@ module Cloudpress
     @file_index ||= {
       live: Cloudpress::Dropbox::Directory.new(client, live_path, :live),
       draft: Cloudpress::Dropbox::Directory.new(client, draft_path, :draft)
+    }
+  end
+
+  def protect_drafts?
+    draft_auth_credentials.keys.compact.any?
+  end
+
+  def draft_auth_credentials
+    @draft_auth_credentials ||= {
+      name:     config.draft_user,
+      password: config.draft_password
     }
   end
 
