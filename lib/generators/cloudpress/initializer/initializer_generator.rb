@@ -21,9 +21,11 @@ module Cloudpress
       initializer 'cloudpress.rb' do 
         <<-EOF
 Cloudpress.configure do |config|
-  config.app_id     = "#{app_key}"
-  config.app_secret = "#{app_secret}"
-  config.app_token  = "#{token}"
+  config.app_key        = "#{app_key}"
+  config.app_secret     = "#{app_secret}"
+  config.app_token      = "#{token}"
+  config.draft_user     = nil
+  config.draft_password = nil
 end
         EOF
       end
