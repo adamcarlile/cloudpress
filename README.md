@@ -16,10 +16,11 @@ It's designed to be included within a Rails 3.1+ application, and provides a mul
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add these lines to your application's Gemfile:
 
 ```ruby
 gem 'cloudpress'
+gem 'metadown', github: 'steveklabnik/metadown'
 ```
 
 And then execute:
